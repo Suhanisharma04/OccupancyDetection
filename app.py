@@ -49,7 +49,9 @@ def validate_user(email, password):
         return True
     return False
 
-
+def get_values():
+    return
+    
 if __name__ == "__main__":
     app.run(debug=True)
 
