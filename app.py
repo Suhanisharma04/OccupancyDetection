@@ -49,6 +49,26 @@ def validate_user(email, password):
         return True
     return False
 
+@app.route('/occupancy')
+def occupancy():
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    current_status = "Occupied"
+    people_count = 3
+
+    return render_template('occupancy.html',
+                           status=current_status, count=people_count)
+
+@app.route('/temperature')
+def temperature():
+    if 'user' not in session:
+        return redirect(url_for('login'))
+
+    current_temp = 23.7
+
+    return render_template('temperature.html',
+                           temperature=current_temp)
+
 def get_values():
     return
     

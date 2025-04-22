@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Occupancy</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Room Occupancy</h1>
+    <p>Status: <strong>{{ status }}</strong></p>
+    <p>People Detected: <strong>{{ count }}</strong></p>
+
+    <a href="{{ url_for('index') }}">Back to Dashboard</a>
+</body>
+</html>
