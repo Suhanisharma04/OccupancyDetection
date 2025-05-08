@@ -2,96 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Smart Office Dashboard</title>
+    <title>Occupancy Detection Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/toolkit.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
         body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #f4f6f8, #e8ecf0);
+            background-color: #f8f9fa;
+            padding: 40px;
         }
-
-        .logout-container {
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .logout-btn {
             position: absolute;
             top: 20px;
-            right: 30px;
+            right: 40px;
         }
-
-        .dashboard-container {
-            max-width: 1000px;
-            margin: 80px auto;
-            text-align: center;
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border-radius: 15px;
         }
-
-        .dashboard-container h1 {
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-            color: #333;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
-
-        .card-row {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
+        .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #007bff;
         }
-
-        .card-box {
-            width: 300px;
-            height: 180px;
-            background-color: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            color: #333;
+        .card-body h5 {
+            font-size: 20px;
+            margin-bottom: 10px;
         }
-
-        .card-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-box h4 {
-            font-size: 1.4rem;
-        }
-
-        .card-box i {
-            font-size: 1.8rem;
-            margin-right: 10px;
+        .card-body p {
+            font-size: 16px;
+            color: #555;
         }
     </style>
 </head>
 <body>
 
-    <div class="logout-container">
-        <form action="{{ url_for('logout') }}" method="get">
-            <button type="submit" class="btn btn-danger">
-                <i class="bi bi-box-arrow-right"></i> Logout
-            </button>
-        </form>
-    </div>
+<!-- Logout Button -->
+<div class="logout-btn">
+    <a href="{{ url_for('logout') }}" class="btn btn-danger btn-sm">Logout</a>
+</div>
 
-    <div class="dashboard-container">
-        <h1>Smart Office Dashboard</h1>
+<!-- Header -->
+<div class="dashboard-header">
+    <h1>Occupancy Detection Dashboard</h1>
+    <p>Welcome to the smart monitoring panel</p>
+</div>
 
-        <div class="card-row">
-            <!-- Occupancy Card -->
-            <a href="{{ url_for('occupancy') }}" class="card-box">
-                <h4><i class="bi bi-door-open"></i> Room Occupancy</h4>
-            </a>
+<!-- Cards -->
+<div class="container">
+    <div class="row g-4 justify-content-center">
+        <!-- Temperature Card -->
+        <div class="col-md-4">
+            <div class="card text-center p-3">
+                <div class="card-body">
+                    <div class="icon"><i class="bi bi-thermometer-half"></i></div>
+                    <h5 class="card-title">Room Temperature</h5>
+                    <p class="card-text"><strong>{{ temperature }}</strong></p> <!-- This is where you put the temperature data -->
+                    <a href="{{ url_for('temperature_page') }}" class="btn btn-outline-primary btn-sm">More Details</a>
+                </div>
+            </div>
+        </div>
 
-            <!-- Temperature Card -->
-            <a href="{{ url_for('temperature') }}" class="card-box">
-                <h4><i class="bi bi-thermometer-half"></i> Temperature</h4>
-            </a>
+        <!-- Occupancy Card -->
+        <div class="col-md-4">
+            <div class="card text-center p-3">
+                <div class="card-body">
+                    <div class="icon"><i class="bi bi-people-fill"></i></div>
+                    <h5 class="card-title">Room Occupancy</h5>
+                    <p class="card-text"><strong>{{ occupancy }}</strong></p> <!-- This is where you put the occupancy data -->
+                    <a href="{{ url_for('occupancy_page') }}" class="btn btn-outline-primary btn-sm">More Details</a>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
 </body>
 </html>
