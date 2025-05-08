@@ -2,14 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Room Occupancy</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Occupancy Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #eef5f0; /* Soft green background */
+            padding: 60px 20px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .content {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .icon {
+            font-size: 60px;
+            color: #28a745; /* Green icon */
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .occupancy-value {
+            font-size: 40px;
+            font-weight: 600;
+            color: #28a745; /* Green value text */
+            margin-bottom: 30px;
+        }
+        .back-btn {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Room Occupancy</h1>
-    <p>Status: <strong>{{ status }}</strong></p>
-    <p>People Detected: <strong>{{ count }}</strong></p>
 
-    <a href="{{ url_for('index') }}">Back to Dashboard</a>
+<div class="content">
+    <div class="icon"><i class="bi bi-people-fill"></i></div>
+    <h1>Current Occupancy Status</h1>
+    <div class="occupancy-value">{{ occupancy }}</div>
+    <a href="{{ url_for('index') }}" class="btn btn-outline-success back-btn">← Back to Dashboard</a>
+</div>
+
 </body>
 </html>
