@@ -16,7 +16,7 @@ Backend built with Flask and data stored in SQLite
 
 Technologies Used:
 
-Python (Flask, GPIO, AHT20 libraries),
+Python (Flask, Breadboard, AHT20 libraries),
 Raspberry Pi 400,
 PIR Motion Sensors,
 AHT20 Temperature & Humidity Sensor,
